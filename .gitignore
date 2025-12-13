@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual env
+venv/
+.env
+
+# YOLO
+runs/
+*.pt
+
+# Dataset
+dataset/train/
+dataset/val/
+dataset/test/
+
+# OS
+.DS_Store
+
