@@ -25,3 +25,5 @@ tifffile==2025.12.12
 torch==2.9.1
 torchvision==0.24.1
 typing_extensions==4.15.0
+Flask==2.3.2
+requests==2.32.0
