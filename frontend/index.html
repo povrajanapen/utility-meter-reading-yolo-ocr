@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Camera</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="/js/app.js"></script>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script>
+        // Global Error Handler for Mobile Debugging
+        window.onerror = function (msg, url, line, col, error) {
+            const errDiv = document.createElement('div');
+            errDiv.style.position = 'fixed';
+            errDiv.style.top = '0';
+            errDiv.style.left = '0';
+            errDiv.style.width = '100%';
+            errDiv.style.background = 'red';
+            errDiv.style.color = 'white';
+            errDiv.style.zIndex = '9999';
+            errDiv.style.padding = '10px';
+            errDiv.style.fontSize = '12px';
+            errDiv.textContent = `Error: ${msg} at ${line}:${col}`;
+            document.body.appendChild(errDiv);
+            return false;
+        };
+        // Catch unhandled promise rejections
+        window.addEventListener('unhandledrejection', function (event) {
+            const errDiv = document.createElement('div');
+            errDiv.style.position = 'fixed';
+            errDiv.style.top = '20px'; // Offset
+            errDiv.style.left = '0';
+            errDiv.style.right = '0';
+            errDiv.style.background = 'orange';
+            errDiv.style.color = 'black';
+            errDiv.style.zIndex = '9999';
+            errDiv.style.padding = '10px';
+            errDiv.style.fontSize = '12px';
+            errDiv.textContent = `Promise Error: ${event.reason}`;
+            document.body.appendChild(errDiv);
+        });
+    </script>
+</head>
+
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="logo">Automatic Meter Reading</div>
+        </header>
+
+        <main class="camera-view">
+            <div class="video-container">
+                <video id="camera-stream" autoplay playsinline muted></video>
+                <div class="camera-overlay">
+                    <div class="scan-line"></div>
+                    <canvas id="overlay-canvas"></canvas>
+                </div>
+                <div id="error-message" class="error-message hidden">
+                    <p>Camera access required</p>
+                    <button id="retry-btn" class="btn-primary">Enable Camera</button>
+                </div>
+            </div>
+
+            <canvas id="photo-canvas" class="hidden"></canvas>
+            <div id="photo-preview" class="photo-preview hidden">
+                <img id="preview-img" alt="Captured Photo">
+                <div class="preview-actions">
+                    <button id="retake-btn" class="btn-secondary">Retake</button>
+                    <button id="save-btn" class="btn-primary">Save</button>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script type="module" src="js/app.js"></script>
+</body>
+
+</html>

@@ -19,3 +19,6 @@ dataset/test/
 # OS
 .DS_Store
 
+# Frontend
+node_modules/
+.env.local
